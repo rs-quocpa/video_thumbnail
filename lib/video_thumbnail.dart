@@ -9,6 +9,7 @@
 import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 /// Support most popular image formats.
@@ -24,10 +25,10 @@ class VideoThumbnail {
   /// If the thumbnailPath is ommited or null, a thumbnail image file will be created under the same folder as the video file.
   /// Specify the maximum height or width for the thumbnail or 0 for same resolution as the original video.
   /// The lower quality value creates lower quality of the thumbnail image, but it gets ignored for PNG format.
-  static Future<String?> thumbnailFile(
-      {required String video,
-      Map<String, String>? headers,
-      String? thumbnailPath,
+  static Future<String> thumbnailFile(
+      {@required String video,
+      Map<String, String> headers,
+      String thumbnailPath,
       ImageFormat imageFormat = ImageFormat.PNG,
       int maxHeight = 0,
       int maxWidth = 0,
@@ -52,9 +53,9 @@ class VideoThumbnail {
   /// The video can be a local video file, or an URL repreents iOS or Android native supported video format.
   /// Specify the maximum height or width for the thumbnail or 0 for same resolution as the original video.
   /// The lower quality value creates lower quality of the thumbnail image, but it gets ignored for PNG format.
-  static Future<Uint8List?> thumbnailData({
-    required String video,
-    Map<String, String>? headers,
+  static Future<Uint8List> thumbnailData({
+    @required String video,
+    Map<String, String> headers,
     ImageFormat imageFormat = ImageFormat.PNG,
     int maxHeight = 0,
     int maxWidth = 0,
